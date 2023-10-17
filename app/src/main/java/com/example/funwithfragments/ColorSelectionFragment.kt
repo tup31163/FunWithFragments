@@ -5,20 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
+import android.widget.ArrayAdapter
 import android.widget.Spinner
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ColorSelectionFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ColorSelectionFragment : Fragment() {
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +19,25 @@ class ColorSelectionFragment : Fragment() {
         // Inflate the layout for this fragment
         val layout = inflater.inflate(R.layout.fragment_color_selection, container, false)
         val spinner = layout.findViewById<Spinner>(R.id.spinner)
+
+        spinner.adapter = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_spinner_dropdown_item,
+            arrayOf("Red", "White", "Blue", "Lime", "Yellow")
+        )
+//        spinner.adapter = ArrayAdapter(context!!, ...)
+
+        spinner.onItemSelectedListener = object: OnItemSelectedListener {
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+        }
+
 
         return layout
 
