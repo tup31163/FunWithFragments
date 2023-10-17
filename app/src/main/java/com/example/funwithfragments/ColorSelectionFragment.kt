@@ -1,5 +1,6 @@
 package com.example.funwithfragments
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -29,7 +30,9 @@ class ColorSelectionFragment : Fragment() {
 
         spinner.onItemSelectedListener = object: OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                TODO("Not yet implemented")
+                p0?.run {
+                    layout.setBackgroundColor(Color.parseColor(getItemAtPosition(p2).toString()))
+                }
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
